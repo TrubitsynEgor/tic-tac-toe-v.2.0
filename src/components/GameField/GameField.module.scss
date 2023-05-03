@@ -1,0 +1,11 @@
+.gameField {
+	display: grid;
+	grid-template-columns: repeat(3, 150px);
+	grid-template-rows: repeat(3, 150px);
+
+	& button {
+		background-color: var(--gray-200);
+		border: 1px solid var(--dark);
+		cursor: pointer;
+	}
+}
