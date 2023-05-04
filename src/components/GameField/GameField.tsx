@@ -2,30 +2,31 @@ import { DetailsDivProps } from '@/types';
 import styles from './GameField.module.scss';
 import cn from 'classnames'
 import { renderSymbol } from '@/helpers/renderSymbol/renderSymbol';
+import { IWinner } from '../Game/Game';
 
-interface GameFieldProps extends DetailsDivProps { }
-
-export const SYMBOL_X = 'X'
-export const SYMBOL_O = 'O'
-
-export const getSymbolClassName = (symbol: string | null) => {
-  if (symbol === SYMBOL_O) return 'symbol--o'
-  if (symbol === SYMBOL_X) return 'symbol--x'
-  return ''
+interface GameFieldProps extends DetailsDivProps {
+  winner: IWinner
+  cells: string[]
+  handleCellClick: (idx: number) => void
+  restart: () => void
 }
 
-const cells = [SYMBOL_X, SYMBOL_O, null, SYMBOL_X, null, SYMBOL_O, SYMBOL_X, SYMBOL_O, null];
-
-export const GameField = ({ className, ...props }: GameFieldProps) => {
-
+export const GameField = ({ cells, handleCellClick, restart, winner, className, ...props }: GameFieldProps) => {
 
   return (
-    <div className={cn(styles.gameField, className)} {...props}>
+    <div className={styles.wrapper}>
+      <div className={cn(styles.gameField, className)} {...props}>
+        {cells.map((btn, idx) => <button
+          onClick={() => handleCellClick(idx)}
+          key={idx}
+          className={cn(styles.cell, {
+            [styles.cellWin]: winner?.array?.includes(idx)
+          })}>
+          {renderSymbol(btn)}
+        </button>)}
+      </div>
 
-      {cells.map((btn, idx) => <button key={idx} className={cn(styles.cell)}>
-        {renderSymbol(btn)}
-      </button>)}
-
+      <button className={styles.reset} onClick={restart}>Try again!</button>
     </div>
   )
 };

@@ -1,7 +1,7 @@
 .gameField {
 	display: grid;
-	grid-template-columns: repeat(3, 150px);
-	grid-template-rows: repeat(3, 150px);
+	grid-template-columns: repeat(3, 140px);
+	grid-template-rows: repeat(3, 140px);
 
 
 }
@@ -14,4 +14,22 @@
 	&Win {
 		background-color: rgba(tomato, 0.1);
 	}
+}
+
+.reset {
+	border: none;
+	background-color: var(--red);
+	margin: 0 auto;
+	padding: 8px 16px;
+	border-radius: 7px;
+	font-weight: 600;
+	color: var(--light);
+	cursor: pointer;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
 }

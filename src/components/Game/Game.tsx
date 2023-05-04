@@ -1,18 +1,27 @@
 import { DetailsDivProps } from '@/types';
 import styles from './Game.module.scss';
 import cn from 'classnames'
-import { GameField, SYMBOL_O, SYMBOL_X, getSymbolClassName } from '../GameField/GameField';
+import { GameField } from '../GameField/GameField';
 import { renderSymbol } from '@/helpers/renderSymbol/renderSymbol';
+import { useTicTacToe } from '../hooks/useTicTacToe';
 
-interface GameProps extends DetailsDivProps { }
+export type IWinner = {
+  array: number[]
+  winnerSymbol: string
+} | null
 
-export const Game = ({ className, ...props }: GameProps) => {
-  const currentStep = SYMBOL_X
+export const Game = ({ className, ...props }: DetailsDivProps) => {
+
+  const { isDraw, winner, currentStep, cells, handleCellClick, restart } = useTicTacToe()
 
   return (
     <div className={cn(styles.game, className)} {...props}>
-      <h1>Ход: {renderSymbol(currentStep)}</h1>
-      <GameField />
+      {!isDraw ?
+        (winner === null
+          ? <h1>Step: {renderSymbol(currentStep)} </h1>
+          : <h1>Winner:{renderSymbol(winner.winnerSymbol)} </h1>)
+        : <h1>The draw!</h1>}
+      <GameField winner={winner} cells={cells} handleCellClick={handleCellClick} restart={restart} />
     </div>
   )
 };
