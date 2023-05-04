@@ -17,8 +17,11 @@ export const Game = ({ className, ...props }: DetailsDivProps) => {
         (winner === null
           ? <h1>Step: {renderSymbol(currentStep)} </h1>
           : <h1>Winner:{renderSymbol(winner.winnerSymbol)} </h1>)
-        : <h1>The draw!</h1>}
-      <GameField winner={winner} cells={cells} handleCellClick={handleCellClick} restart={restart} />
+        : <h1 className={styles.draw}>The draw!</h1>}
+
+      <GameField winner={winner} cells={cells} handleCellClick={handleCellClick} />
+
+      <button className={styles.reset} onClick={restart}>Try again!</button>
     </div>
   )
 };

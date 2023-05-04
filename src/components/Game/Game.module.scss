@@ -1,9 +1,10 @@
 .game {
-	width: 600px;
-	height: 600px;
+	width: 640px;
+	height: 640px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	gap: 25px;
 	background-color: var(--light);
 	border-radius: 7px;
 	box-shadow: 2px 3px 10px 10px rgba(#000000, 0.1);
@@ -12,7 +13,9 @@
 
 }
 
-
+.draw {
+	color: var(--red);
+}
 
 h1 {
 	font-size: 70px;
@@ -20,4 +23,28 @@ h1 {
 	align-items: center;
 	gap: 40px;
 
+}
+
+.reset {
+	border: none;
+	background-color: var(--red);
+	margin: 0 auto;
+	padding: 8px 16px;
+	border-radius: 7px;
+	font-weight: 600;
+	color: var(--light);
+	cursor: pointer;
+	font-size: 18px;
+	transition: all .3s ease-in-out;
+	box-shadow: 0px 0px 3px 3px rgba(red, 0.2);
+
+	&:hover {
+		background-color: rgba(red, 0.7);
+		transform: scale(1.1);
+	}
+
+	&:active {
+		transform: scale(1);
+		box-shadow: none;
+	}
 }

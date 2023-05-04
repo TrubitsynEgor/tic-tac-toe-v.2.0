@@ -10,27 +10,9 @@
 	background-color: var(--gray-200);
 	border: 1px solid var(--dark);
 	cursor: pointer;
+	box-shadow: inset 0px 0px 20px 0px rgba(#000000, 0.3);
 
 	&Win {
 		background-color: rgba(tomato, 0.1);
 	}
-}
-
-.reset {
-	border: none;
-	background-color: var(--red);
-	margin: 0 auto;
-	padding: 8px 16px;
-	border-radius: 7px;
-	font-weight: 600;
-	color: var(--light);
-	cursor: pointer;
-	font-size: 18px;
-}
-
-.wrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 20px;
 }
