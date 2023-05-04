@@ -1,4 +1,4 @@
-import { getSymbolClassName } from '../getSymbolClassName';
+import { getSymbolClassName } from './getSymbolClassName';
 
 export const renderSymbol = (symbol: string | null) =>
   symbol !== null

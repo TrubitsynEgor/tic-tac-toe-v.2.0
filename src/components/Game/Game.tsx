@@ -2,13 +2,10 @@ import { DetailsDivProps } from '@/types';
 import styles from './Game.module.scss';
 import cn from 'classnames'
 import { GameField } from '../GameField/GameField';
-import { renderSymbol } from '@/helpers/renderSymbol/renderSymbol';
-import { useTicTacToe } from '../hooks/useTicTacToe';
+import { renderSymbol } from '@/helpers/renderSymbol';
+import { useTicTacToe } from '../../hooks/useTicTacToe';
 
-export type IWinner = {
-  array: number[]
-  winnerSymbol: string
-} | null
+
 
 export const Game = ({ className, ...props }: DetailsDivProps) => {
 

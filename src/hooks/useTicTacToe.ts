@@ -1,16 +1,14 @@
 import { SYMBOL_O, SYMBOL_X } from '@/helpers/getSymbolClassName'
-import { IWinner } from '../Game/Game'
 import { useState } from 'react'
 import { calculateWinner } from '@/helpers/calculateWinner'
+import { WinnerType } from '@/types'
 
 
 export const useTicTacToe = () => {
-	const [cells, setCells] = useState(['', '', '', '', '', '', '', '', ''])
+	const [cells, setCells] = useState(Array.from({ length: 9 }, () => ''))
 	const [currentStep, setCurrentStep] = useState(SYMBOL_X)
-	const [winner, setWinner] = useState<IWinner>(null)
-
+	const [winner, setWinner] = useState<WinnerType>(null)
 	const isDraw = !winner && cells.filter(el => el).length === 9
-
 
 	const handleCellClick = (idx: number) => {
 		if (cells[idx] || winner !== null) return
@@ -24,7 +22,7 @@ export const useTicTacToe = () => {
 	}
 
 	const restart = () => {
-		setCells(['', '', '', '', '', '', '', '', ''])
+		setCells(Array.from({ length: 9 }, () => ''))
 		setWinner(null)
 		setCurrentStep(SYMBOL_X)
 	}

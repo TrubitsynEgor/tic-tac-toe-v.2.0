@@ -1,11 +1,10 @@
-import { DetailsDivProps } from '@/types';
+import { DetailsDivProps, WinnerType } from '@/types';
 import styles from './GameField.module.scss';
 import cn from 'classnames'
-import { renderSymbol } from '@/helpers/renderSymbol/renderSymbol';
-import { IWinner } from '../Game/Game';
+import { renderSymbol } from '@/helpers/renderSymbol';
 
 interface GameFieldProps extends DetailsDivProps {
-  winner: IWinner
+  winner: WinnerType
   cells: string[]
   handleCellClick: (idx: number) => void
   restart: () => void
